@@ -22,3 +22,4 @@ sleep 5
 其中eth2 和eth3 根据你的已有网卡和新增网卡来设置，比如我原先已经有两个网卡（eth0、eth1），我现在想要使用两个40G光口的CX314A,那就是需要额外启动eth2和eth3
 同时这里加载mlx4_core.ko会同时自动加载mlx4_en.ko
 ### 编译指南
+参看：https://www.secfa.cn/2024/07/%e7%be%a4%e6%99%96%e9%a9%b1%e5%8a%a8%e7%bc%96%e8%af%91%e7%af%87%ef%bc%88%e5%9b%9b%ef%bc%89sa6400-cx314a-connectx-3-pro/
