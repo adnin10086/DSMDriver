@@ -1,0 +1,1 @@
+https://cn.download.nvidia.com/XFree86/Linux-x86_64/550.100/NVIDIA-Linux-x86_64-550.100.run
