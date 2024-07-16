@@ -1,0 +1,14 @@
+--- mlnx-en-4.9/drivers/net/ethernet/mellanox/mlx4/en_ethtool.c	2023-06-06 05:22:44.000000000 -0700
++++ mlnx-en-4.9-new/drivers/net/ethernet/mellanox/mlx4/en_ethtool.c	2024-07-16 13:26:28.648412998 -0700
+@@ -3231,6 +3231,11 @@ static int mlx4_en_set_phys_id(struct ne
+ #endif
+ 
+ const struct ethtool_ops mlx4_en_ethtool_ops = {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 7, 0)
++        .supported_coalesce_params = ETHTOOL_COALESCE_USECS |
++                                     ETHTOOL_COALESCE_MAX_FRAMES |
++                                     ETHTOOL_COALESCE_USE_ADAPTIVE,
++#endif
+ 	.get_drvinfo = mlx4_en_get_drvinfo,
+ #ifdef HAVE_ETHTOOL_xLINKSETTINGS
+ 	.get_link_ksettings = mlx4_en_get_link_ksettings,

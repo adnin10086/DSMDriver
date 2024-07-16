@@ -1,0 +1,20 @@
+--- mlnx-en-4.9/drivers/net/ethernet/mellanox/mlx4/crdump.c	2023-06-06 05:22:38.000000000 -0700
++++ mlnx-en-4.9-new/drivers/net/ethernet/mellanox/mlx4/crdump.c	2024-07-16 13:20:49.459708721 -0700
+@@ -388,12 +388,11 @@ static int crdump_proc_open(struct inode
+ 	return 0;
+ }
+ 
+-static const struct file_operations crdump_proc_fops = {
+-	.owner		= THIS_MODULE,
+-	.open		= crdump_proc_open,
+-	.read		= seq_read,
+-	.llseek		= seq_lseek,
+-	.release	= seq_release,
++static const struct proc_ops crdump_proc_fops = {
++	.proc_open		= crdump_proc_open,
++	.proc_read		= seq_read,
++	.proc_lseek		= seq_lseek,
++	.proc_release	= seq_release,
+ };
+ 
+ int mlx4_crdump_init(struct mlx4_dev *dev)
