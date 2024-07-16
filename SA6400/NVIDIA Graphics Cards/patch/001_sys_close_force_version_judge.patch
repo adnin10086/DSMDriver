@@ -1,0 +1,16 @@
+--- kernel/nvidia/nv-caps.c	2024-06-27 12:09:48.000000000 -0700
++++ kernel-new/nvidia/nv-caps.c	2024-07-16 14:31:15.917366333 -0700
+@@ -600,10 +600,11 @@ void NV_API_CALL nv_cap_close_fd(int fd)
+     close_fd(fd);
+ #elif NV_IS_EXPORT_SYMBOL_PRESENT___close_fd
+     __close_fd(current->files, fd);
+-#else
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(4, 17, 0))
+     sys_close(fd);
++#else
++    ksys_close(fd);
+ #endif
+-
+     task_unlock(current);
+ #endif
+ }
